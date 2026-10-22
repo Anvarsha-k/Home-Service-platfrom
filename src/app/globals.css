@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+
+  /* Deep navy — trust */
+  --color-ink-950: #050f1c;
+  --color-ink-900: #0a1a2d;
+  --color-ink-800: #11253d;
+  --color-ink-700: #1a3452;
+  --color-ink-600: #2a4a6e;
+  --color-ink-400: #7a8ea8;
+  --color-ink-300: #a9b8cb;
+
+  /* Flame orange — action & warmth */
+  --color-flame-300: #ffb08a;
+  --color-flame-400: #ff7a45;
+  --color-flame-500: #ff5a1f;
+  --color-flame-600: #e64a12;
+  --color-flame-700: #c23a0b;
+
+  /* Ice blue — winter accent */
+  --color-ice-200: #cfeaff;
+  --color-ice-300: #9ed8ff;
+  --color-ice-400: #5cbeff;
+  --color-ice-500: #2a9df4;
+
+  /* Warm neutrals */
+  --color-cream: #faf7f2;
+  --color-sand: #f1ebe1;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-ping-slow: ping-slow 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-snow: snow linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes ping-slow {
+    0% { transform: scale(1); opacity: 0.7; }
+    80%, 100% { transform: scale(2.2); opacity: 0; }
+  }
+  --animate-ring: ring 0.9s ease-in-out;
+
+  @keyframes ring {
+    0%, 100% { transform: rotate(0); }
+    15% { transform: rotate(-16deg); }
+    30% { transform: rotate(14deg); }
+    45% { transform: rotate(-10deg); }
+    60% { transform: rotate(8deg); }
+    75% { transform: rotate(-4deg); }
+  }
+  @keyframes snow {
+    0% { transform: translate3d(0, -10vh, 0); }
+    100% { transform: translate3d(var(--drift, 20px), 110vh, 0); }
+  }
+}
+
+@utility container-x {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 40rem) { padding-inline: 1.5rem; }
+  @media (width >= 64rem) { padding-inline: 2rem; }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--color-flame-500);
+    color: white;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-flame-500);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* Subtle grain / dot texture for dark sections */
+.bg-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.bg-dots-dark {
+  background-image: radial-gradient(rgba(10, 26, 45, 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Light sweep across a button on hover */
+.btn-shine {
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
+
+/* Nav link underline that grows from the center */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.3rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-flame-500);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+/* Coupon ticket notches */
+.ticket {
+  --notch: 14px;
+  --notch-y: calc(100% - 93px); /* lines up with the dashed tear line */
+  mask:
+    radial-gradient(circle var(--notch) at 0 var(--notch-y), transparent 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--notch) at 100% var(--notch-y), transparent 98%, #000) right / 51% 100% no-repeat;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
