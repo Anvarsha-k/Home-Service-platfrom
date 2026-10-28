@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ClipboardCheck, Phone } from "lucide-react";
 import { usePagePhone } from "@/lib/usePagePhone";
 
 /** Thumb-friendly sticky action bar on phones. */
 export function MobileCallBar() {
   const { phoneHref } = usePagePhone();
+  if (usePathname() === "/") return null; // gateway page has no call/quote actions
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink-900/10 bg-white/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-lg md:hidden">
       <div className="grid grid-cols-2 gap-2.5">

@@ -19,6 +19,7 @@ const links = [
 export function Header() {
   const pathname = usePathname();
   const { phone, phoneHref } = usePagePhone();
+  const isHome = pathname === "/"; // gateway page: no call/quote actions
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
@@ -130,6 +131,8 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
+          {!isHome && (
+            <>
           {/* Full call pill (large screens) */}
           <a
             href={phoneHref}
@@ -165,6 +168,8 @@ export function Header() {
             <Phone className="h-5 w-5 group-hover:animate-ring" aria-hidden />
             <span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full bg-emerald-400 ring-2 ring-white" />
           </a>
+            </>
+          )}
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
@@ -226,6 +231,7 @@ export function Header() {
                   ))}
                 </div>
               </div>
+              {!isHome && (
               <div className="space-y-3 border-t border-ink-900/5 p-5">
                 <LinkButton href={phoneHref} variant="dark" size="lg" className="w-full">
                   <Phone className="h-5 w-5" aria-hidden /> {phone}
@@ -234,6 +240,7 @@ export function Header() {
                   Get a Quote
                 </LinkButton>
               </div>
+              )}
             </motion.div>
           </motion.div>
         )}
