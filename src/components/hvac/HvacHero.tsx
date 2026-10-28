@@ -7,8 +7,10 @@ import { LinkButton } from "@/components/ui/Button";
 import { Snow } from "@/components/ui/Snow";
 import { GoogleG, Stars } from "@/components/ui/Stars";
 import { site } from "@/lib/site";
+import { getServicePhone } from "@/lib/phone";
 
 export function HvacHero() {
+  const { phone, phoneHref } = getServicePhone("hvac");
   return (
     <section className="relative isolate overflow-hidden bg-ink-950 text-white">
       <Image
@@ -58,8 +60,8 @@ export function HvacHero() {
           </ul>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <LinkButton href={site.phoneHref} size="lg" className="text-[17px]">
-              <Phone className="h-5 w-5" aria-hidden /> Call {site.phone}
+            <LinkButton href={phoneHref} size="lg" className="text-[17px]">
+              <Phone className="h-5 w-5" aria-hidden /> Call {phone}
             </LinkButton>
             <div className="flex items-center gap-3 sm:ml-3">
               <GoogleG className="h-7 w-7" />

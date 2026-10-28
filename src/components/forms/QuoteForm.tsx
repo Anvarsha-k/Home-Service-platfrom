@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, CircleCheckBig, Clock, LoaderCircle, Lock, Phone } from "lucide-react";
 import { formatPhone, submitLead } from "@/lib/submitLead";
-import { site } from "@/lib/site";
+import { usePagePhone } from "@/lib/usePagePhone";
 
 const defaultOptions = ["Heating", "Cooling", "Plumbing", "Electrical", "Roofing", "Appliance", "Junk Removal", "Other"];
 
@@ -25,6 +25,7 @@ export function QuoteForm({
   cta = "Get My Free Quote",
   className = "",
 }: Props) {
+  const { phone: callPhone, phoneHref: callHref } = usePagePhone();
   const [service, setService] = useState(defaultService ?? options[0]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -153,8 +154,8 @@ export function QuoteForm({
               <span className="flex items-center gap-1.5">
                 <Lock className="h-3.5 w-3.5" aria-hidden /> No spam. No obligation.
               </span>
-              <a href={site.phoneHref} className="flex items-center gap-1.5 font-semibold text-ink-900 hover:text-flame-600">
-                <Phone className="h-3.5 w-3.5" aria-hidden /> Or call {site.phone}
+              <a href={callHref} className="flex items-center gap-1.5 font-semibold text-ink-900 hover:text-flame-600">
+                <Phone className="h-3.5 w-3.5" aria-hidden /> Or call {callPhone}
               </a>
             </div>
           </motion.form>

@@ -23,6 +23,9 @@ export type Service = {
   image: StaticImageData;
   heroImage: StaticImageData;
   accent: string; // tailwind gradient classes for the icon tile
+  /** Dedicated booking number for this service (dummy until the client supplies real ones) */
+  phone: string;
+  phoneHref: string;
   priceFrom: string;
   headline: string;
   sub: string;
@@ -40,6 +43,8 @@ export const services: Service[] = [
     image: hvacImg,
     heroImage: hvacImg,
     accent: "from-orange-500 to-rose-500",
+    phone: "(555) 012-1001",
+    phoneHref: "tel:+15550121001",
     priceFrom: "$79 tune-up",
     headline: "Heat Back On — Today.",
     sub: "Same-day furnace and heat pump repair from NATE-certified technicians.",
@@ -55,6 +60,8 @@ export const services: Service[] = [
     image: plumbingImg,
     heroImage: plumbingHero,
     accent: "from-sky-500 to-blue-600",
+    phone: "(555) 012-1002",
+    phoneHref: "tel:+15550121002",
     priceFrom: "$89 diagnostic",
     headline: "Leaks Stopped. Drains Flowing. Hot Water Back.",
     sub: "Licensed master plumbers on call 24/7 — with flat-rate prices you approve before we start.",
@@ -77,6 +84,8 @@ export const services: Service[] = [
     image: electricalImg,
     heroImage: electricalHero,
     accent: "from-amber-400 to-orange-500",
+    phone: "(555) 012-1003",
+    phoneHref: "tel:+15550121003",
     priceFrom: "$99 safety check",
     headline: "Safe, Code-Compliant Electrical Work — Done Right.",
     sub: "Licensed electricians for repairs, upgrades and installations, big or small.",
@@ -99,6 +108,8 @@ export const services: Service[] = [
     image: roofingImg,
     heroImage: roofingHero,
     accent: "from-slate-500 to-slate-700",
+    phone: "(555) 012-1004",
+    phoneHref: "tel:+15550121004",
     priceFrom: "Free inspection",
     headline: "Storm Damage? Leak? We've Got You Covered.",
     sub: "Free roof inspections, insurance claim help and lifetime-warranty replacements.",
@@ -121,6 +132,8 @@ export const services: Service[] = [
     image: applianceImg,
     heroImage: applianceHero,
     accent: "from-emerald-500 to-teal-600",
+    phone: "(555) 012-1005",
+    phoneHref: "tel:+15550121005",
     priceFrom: "$69 diagnostic",
     headline: "Your Appliances, Working Like New.",
     sub: "Factory-trained techs for every major brand — most repairs completed in one visit.",
@@ -143,6 +156,8 @@ export const services: Service[] = [
     image: junkImg,
     heroImage: junkHero,
     accent: "from-lime-500 to-green-600",
+    phone: "(555) 012-1006",
+    phoneHref: "tel:+15550121006",
     priceFrom: "Free estimate",
     headline: "Point at It. We'll Haul It Away.",
     sub: "Same-day junk removal with upfront volume pricing — we donate and recycle up to 60%.",

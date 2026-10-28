@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!s) return {};
   return {
     title: `${s.name} in ${site.city}`,
-    description: `${s.sub} Serving ${site.city}. Call ${site.phone}.`,
+    description: `${s.sub} Serving ${site.city}. Call ${s.phone}.`,
   };
 }
 
@@ -87,8 +87,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 ))}
               </ul>
               <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-                <LinkButton href={site.phoneHref} size="lg">
-                  <Phone className="h-5 w-5" aria-hidden /> Call {site.phone}
+                <LinkButton href={s.phoneHref} size="lg">
+                  <Phone className="h-5 w-5" aria-hidden /> Call {s.phone}
                 </LinkButton>
                 <div className="flex items-center gap-3 sm:ml-2">
                   <GoogleG className="h-7 w-7" />

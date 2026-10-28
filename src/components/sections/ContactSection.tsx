@@ -1,4 +1,5 @@
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin } from "lucide-react";
+import { CallCard } from "@/components/sections/CallCard";
 import { QuoteForm } from "@/components/forms/QuoteForm";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/lib/site";
@@ -37,19 +38,7 @@ export function ContactSection({
           )}
 
           <Reveal delay={0.08} className={showHeading ? "mt-8" : ""}>
-            <a
-              href={site.phoneHref}
-              className="group flex items-center gap-5 rounded-[28px] bg-flame-500 p-6 text-white shadow-[0_30px_60px_-25px_rgba(255,90,31,0.7)] transition-all duration-300 hover:-translate-y-1 hover:bg-flame-600 sm:p-7"
-            >
-              <span className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white/15">
-                <span className="absolute inset-0 animate-ping-slow rounded-full bg-white/20" />
-                <Phone className="relative h-6 w-6 group-hover:animate-ring" aria-hidden />
-              </span>
-              <span>
-                <span className="block text-xs font-bold uppercase tracking-[0.15em] text-white/80">Call 24/7 — emergencies too</span>
-                <span className="mt-1 block font-display text-3xl font-extrabold sm:text-4xl">{site.phone}</span>
-              </span>
-            </a>
+            <CallCard />
 
             <ul className="mt-5 divide-y divide-ink-900/5 rounded-[28px] bg-white px-6 ring-1 ring-ink-900/5">
               {[

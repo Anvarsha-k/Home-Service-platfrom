@@ -25,7 +25,7 @@ npm run build && npm start   # production build
 Everything is placeholder data. Edit these files:
 
 - **`src/lib/site.ts`** — business name, phone, email, address, license, hours, rating, service areas, offers, guarantees
-- **`src/lib/services.ts`** — each service's headline, problems, offerings, photos
+- **`src/lib/services.ts`** — each service's headline, problems, offerings, photos and its own booking phone number (`phone` / `phoneHref`)
 - **`src/app/about/page.tsx`** — company story and values
 - **`src/components/ui/Logo.tsx`** + **`src/app/icon.svg`** — logo
 - **`src/assets/`** — photos (currently free Unsplash images)

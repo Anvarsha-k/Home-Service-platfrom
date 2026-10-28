@@ -8,7 +8,7 @@ import { ArrowRight, ChevronDown, Menu, Phone, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { LinkButton } from "@/components/ui/Button";
 import { services } from "@/lib/services";
-import { site } from "@/lib/site";
+import { usePagePhone } from "@/lib/usePagePhone";
 
 const links = [
   { href: "/hvac", label: "Heating & AC", badge: "Winter" },
@@ -18,6 +18,7 @@ const links = [
 
 export function Header() {
   const pathname = usePathname();
+  const { phone, phoneHref } = usePagePhone();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
@@ -131,7 +132,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           {/* Full call pill (large screens) */}
           <a
-            href={site.phoneHref}
+            href={phoneHref}
             className="group hidden items-center gap-3 rounded-full border border-ink-900/10 bg-white py-1.5 pl-1.5 pr-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-flame-500/40 hover:shadow-[0_12px_30px_-12px_rgba(255,90,31,0.55)] xl:flex"
           >
             <span className="relative grid h-10 w-10 place-items-center rounded-full bg-ink-900 text-white transition-colors duration-300 group-hover:bg-flame-500">
@@ -145,7 +146,7 @@ export function Header() {
               <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-ink-400 transition-colors group-hover:text-flame-600">
                 24/7 Emergency
               </span>
-              <span className="block font-display text-[16px] font-bold text-ink-900">{site.phone}</span>
+              <span className="block font-display text-[16px] font-bold text-ink-900">{phone}</span>
             </span>
           </a>
 
@@ -157,8 +158,8 @@ export function Header() {
 
           {/* Compact call button (smaller screens) */}
           <a
-            href={site.phoneHref}
-            aria-label={`Call ${site.phone}`}
+            href={phoneHref}
+            aria-label={`Call ${phone}`}
             className="group relative grid h-11 w-11 place-items-center rounded-full border border-ink-900/10 bg-white text-ink-900 transition-all duration-300 hover:border-flame-500 hover:bg-flame-500 hover:text-white xl:hidden"
           >
             <Phone className="h-5 w-5 group-hover:animate-ring" aria-hidden />
@@ -226,8 +227,8 @@ export function Header() {
                 </div>
               </div>
               <div className="space-y-3 border-t border-ink-900/5 p-5">
-                <LinkButton href={site.phoneHref} variant="dark" size="lg" className="w-full">
-                  <Phone className="h-5 w-5" aria-hidden /> {site.phone}
+                <LinkButton href={phoneHref} variant="dark" size="lg" className="w-full">
+                  <Phone className="h-5 w-5" aria-hidden /> {phone}
                 </LinkButton>
                 <LinkButton href="/contact" size="lg" className="w-full">
                   Get a Quote

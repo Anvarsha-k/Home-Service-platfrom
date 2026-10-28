@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Clock, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
+import { PhoneLine } from "@/components/layout/PhoneLine";
 import { SocialIcons } from "@/components/ui/SocialIcons";
 import { GoogleG, Stars } from "@/components/ui/Stars";
 import { services } from "@/lib/services";
@@ -58,13 +59,7 @@ export function Footer() {
               <h3 className="mb-5 font-sans text-sm font-bold uppercase tracking-[0.15em] text-white">Get in touch</h3>
               <ul className="space-y-4">
                 <li>
-                  <a href={site.phoneHref} className="flex items-start gap-3 transition hover:text-flame-400">
-                    <Phone className="mt-0.5 h-4 w-4 shrink-0 text-flame-500" aria-hidden />
-                    <span>
-                      <span className="block font-semibold text-white">{site.phone}</span>
-                      <span className="text-xs">24/7 emergency line</span>
-                    </span>
-                  </a>
+                  <PhoneLine />
                 </li>
                 <li>
                   <a href={`mailto:${site.email}`} className="flex items-start gap-3 wrap-anywhere transition hover:text-flame-400">
